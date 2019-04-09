@@ -1,0 +1,14 @@
+{
+  "name": "agata",
+  "version": "1.0.0",
+  "main": "app.js",
+  "license": "MIT",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "fetch-cookie": "^0.7.0",
+    "jsdom": "^11.11.0",
+    "node-fetch": "^2.1.2"
+  }
+}
