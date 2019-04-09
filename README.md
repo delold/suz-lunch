@@ -2,6 +2,14 @@
 
 Simple API for scraping `https://agata.suz.cvut.cz/`
 
+## Deployment
+
+```bash
+$ yarn
+$ yarn global add serverless
+$ serverless deploy -v
+```
+
 ## Endpoints
 See the included HTTP Archive file `requests.har`
 
