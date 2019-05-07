@@ -115,7 +115,7 @@ const fetchMenu = async ({ id }) => {
 
           if (columns[3].querySelector('img')) {
             meal.picture = columns[3].querySelector('a').getAttribute('href')
-            if (meal.picture) meal.picture = url.resolve(dom.window.location.href, meal.picture)
+            if (meal.picture) meal.picture = url.resolve(dom.window.location.href, meal.picture).replace('imgshow.php', 'showfoto.php')
           }
 
           choices.push(meal)
