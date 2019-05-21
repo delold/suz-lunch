@@ -131,6 +131,25 @@ const fetchMenu = async ({ id }) => {
   }
 }
 
+const getMenzaImage = (src) => {
+  switch (src) {
+    case '15': return 'https://www.suz.cvut.cz/images/gallery/archicafe4.jpg'
+    case '5': return 'https://www.suz.cvut.cz/images/gallery/menza---canteen25.jpg'
+    case '12': return 'https://www.suz.cvut.cz/images/gallery/buffet---fsv3.jpg'
+    case '9': return 'https://www.suz.cvut.cz/images/gallery/restarurace-kokos1.jpg'
+    case '4': return 'https://www.suz.cvut.cz/images/gallery/canteen9.jpg'
+    case '1': return 'https://www.suz.cvut.cz/images/gallery/menza-strahov---canteen.jpg'
+    case '2': return 'https://www.suz.cvut.cz/images/gallery/studentsky-dum6.jpg'
+    case '10': return 'https://www.suz.cvut.cz/images/gallery/pizzerie-la-fontanella13.jpg'
+    case '3': return 'https://www.suz.cvut.cz/images/gallery/technicka-menza1.jpg'
+    case '6': return 'https://www.suz.cvut.cz/images/gallery/vydejna-horska---canteen7.jpg'
+    case '8': return 'https://www.suz.cvut.cz/images/gallery/vydejna-karlovo-namesti.jpg'
+  }
+
+  return null
+}
+
+
 const fetchRestaurants = async () => {
   const dom = await JSDOM.fromURL(`https://agata.suz.cvut.cz/jidelnicky/index.php`)
   const rows = dom.window.document.querySelectorAll(`*[href*="clPodsystem"]`)
@@ -139,9 +158,11 @@ const fetchRestaurants = async () => {
   try {
     for (let item of rows) {
       if (item.parentElement.style.display !== "none") {
+        const id = item.href.split("clPodsystem=").pop()
         result.push({
-          id: item.href.split("clPodsystem=").pop(),
+          id,
           name: item.innerHTML,
+          image: getMenzaImage(id)
         })
       }
     }
